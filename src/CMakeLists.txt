@@ -1,0 +1,8 @@
+add_subdirectory(basic)
+add_subdirectory(range)
+add_subdirectory(lazy-value)
+add_subdirectory(meta-programming)
+add_subdirectory(functor-and-monad)
+add_subdirectory(examples)
+add_subdirectory(state-machine)
+add_subdirectory(monad)

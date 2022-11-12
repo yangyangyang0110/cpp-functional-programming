@@ -1,0 +1,19 @@
+/* Proj: cpp_cmake-template
+ * File: configs.h
+ * Created Date: 2022/9/30
+ * Author: YangYangYang (yangzilong@objecteye.com)
+ * Description:
+ * -----
+ * Last Modified: 2022/9/30 21:45:17
+ * Modified By: YangYangYang (yangzilong@objecteye.com)
+ * -----
+ * Copyright (c) 2022  . All rights reserved.
+ */
+#ifndef CPP_CMAKE_TEMPLATE_CONFIG_H_IN
+#define CPP_CMAKE_TEMPLATE_CONFIG_H_IN
+
+#define PROJECT_VER "@PROJECT_VERSION@"
+#define PROJECT_NAME "@PROJECT_NAME@"
+#define PROJECT_META "@PROJECT_META@"
+
+#endif // CPP_CMAKE_TEMPLATE_CONFIG_H_IN
