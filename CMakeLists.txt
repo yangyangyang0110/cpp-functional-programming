@@ -14,6 +14,7 @@ set(PROJECT_META "META: Version: ${PROJECT_VERSION} BuildTime: ${BUILD_TIME}")
 ### Deps Manager.
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 include(boost)
+include(folly)
 
 set(SRC_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(CONFIG_ROOT ${SRC_ROOT}/configs)
@@ -55,6 +56,7 @@ function(dynamic_build_execute prefix)
             pthread
             # TODO:
             ${Boost_LIBRARIES}
+            Folly::folly
         )
     endforeach ()
 endfunction()

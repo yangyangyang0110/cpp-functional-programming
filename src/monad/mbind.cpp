@@ -15,34 +15,35 @@
 #include <string>
 
 // mbind(M<T1>, F: T1 -> M<T2>) -> M<T2>
-template <typename T, typename F> auto mbind(const std::optional<T> &opt, F f)
-    -> decltype(f(opt.value()))
-{
-    if (opt) return f(opt.value());
-    else return {};
+template <typename T, typename F>
+auto mbind(const std::optional<T>& opt, F f) -> decltype(f(opt.value())) {
+  if (opt)
+    return f(opt.value());
+  else
+    return {};
 }
 
-std::optional<std::string> add_header(std::optional<std::string> const &opt)
-{
-    if (!opt) return {};
-    return {"<h1>" + opt.value() + "</h1>"};
+std::optional<std::string> add_header(std::optional<std::string> const& opt) {
+  if (!opt)
+    return {};
+  return {"<h1>" + opt.value() + "</h1>"};
 }
 
-std::optional<std::string> to_user_html(std::optional<std::string> const &opt)
-{
-    if (!opt) return {};
-    return {opt.value() + "===> html"};
+std::optional<std::string> to_user_html(std::optional<std::string> const& opt) {
+  if (!opt)
+    return {};
+  return {opt.value() + "===> html"};
 }
 
-void test()
-{
-    std::optional<std::string> str = "Hello";
-    auto opt = mbind(mbind(str, add_header), to_user_html);
-    if (opt) { std::cout << opt.value() << std::endl; }
+void test() {
+  std::optional<std::string> str = "Hello";
+  auto opt = mbind(mbind(str, add_header), to_user_html);
+  if (opt) {
+    std::cout << opt.value() << std::endl;
+  }
 }
 
-int main()
-{
-    test();
-    return 0;
+int main() {
+  test();
+  return 0;
 }

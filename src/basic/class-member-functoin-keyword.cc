@@ -67,48 +67,43 @@ void testFn()
 #endif
 
 struct Person {
-    std::string first_name, second_name;
+  std::string first_name, second_name;
 
-    // const: No NRVO when enable const.
-    Person createWithFirstNameWithoutNRVO(std::string name) const
-    {
-        Person person = *this;
-        person.first_name = std::move(name);
-        return person;
-    }
+  // const: No NRVO when enable const.
+  Person createWithFirstNameWithoutNRVO(std::string name) const {
+    Person person = *this;
+    person.first_name = std::move(name);
+    return person;
+  }
 
-    Person createWithFirstName(std::string name)
-    {
-        Person person = *this;
-        person.first_name = std::move(name);
-        return person;
-    }
+  Person createWithFirstName(std::string name) {
+    Person person = *this;
+    person.first_name = std::move(name);
+    return person;
+  }
 
-    Person modifySecondName(std::string name) &&
-    {
-        Person person = std::move(*this);
-        person.second_name = std::move(name);
-        return person;
-    }
+  Person modifySecondName(std::string name) && {
+    Person person = std::move(*this);
+    person.second_name = std::move(name);
+    return person;
+  }
 
-    friend std::ostream &operator<<(std::ostream &os, Person const &ins)
-    {
-        os << "[first_name: " << ins.first_name << " second_name: " << ins.second_name
-           << "]";
-        return os;
-    }
+  friend std::ostream& operator<<(std::ostream& os, Person const& ins) {
+    os << "[first_name: " << ins.first_name
+       << " second_name: " << ins.second_name << "]";
+    return os;
+  }
 };
 
-void test2()
-{
-    Person john{.first_name = "Yang", .second_name = "John"};
-    std::cout << john << std::endl;
-    Person tmp = john.createWithFirstNameWithoutNRVO("YYY").modifySecondName("ZZZ");
-    std::cout << tmp << std::endl;
+void test2() {
+  Person john{.first_name = "Yang", .second_name = "John"};
+  std::cout << john << std::endl;
+  Person tmp =
+      john.createWithFirstNameWithoutNRVO("YYY").modifySecondName("ZZZ");
+  std::cout << tmp << std::endl;
 }
 
-int main(int argc, char **argv)
-{
-    test2();
-    return 0;
+int main(int argc, char** argv) {
+  test2();
+  return 0;
 }

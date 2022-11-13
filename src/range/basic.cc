@@ -14,21 +14,18 @@
 #include <ranges>
 #include <string>
 
-std::string to_lower(const std::string &s)
-{
-    s | std::views::transform([](const char c) { return std::tolower(c); });
-    return "";
+std::string to_lower(const std::string& s) {
+  s | std::views::transform([](const char c) { return std::tolower(c); });
+  return "";
 }
 
-void test()
-{
-    std::string s = " This is a String Var.";
-    auto res = to_lower(s);
-    std::cout << res << std::endl;
+void test() {
+  std::string s = " This is a String Var.";
+  auto res = to_lower(s);
+  std::cout << res << std::endl;
 }
 
-int main()
-{
-    test();
-    return 0;
+int main() {
+  test();
+  return 0;
 }

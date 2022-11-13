@@ -13,16 +13,17 @@
 #include <iostream>
 #include <type_traits>
 
-template <typename T1, typename T2> struct is_same : std::false_type {
-};
+template <typename T1, typename T2>
+struct is_same : std::false_type {};
 
-template <typename T> struct is_same<T, T> : std::true_type {
-};
+template <typename T>
+struct is_same<T, T> : std::true_type {};
 
-void test() { static_assert(is_same<int, int>::value); }
+void test() {
+  static_assert(is_same<int, int>::value);
+}
 
-int main()
-{
-    test();
-    return 0;
+int main() {
+  test();
+  return 0;
 }

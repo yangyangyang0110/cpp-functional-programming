@@ -10,29 +10,29 @@
  * Copyright (c) 2022  . All rights reserved.
  */
 
+#include <future>
 #include <iostream>
 #include <optional>
-#include <future>
 
-template <typename T, typename F> auto transform(std::optional<T> opt, F f)
-    -> decltype(std::make_optional(f(opt.value())))
-{
-    if (opt) {
-        return std::make_optional(f(opt.value()));
-    } else {
-        return {};
-    }
+template <typename T, typename F>
+auto transform(std::optional<T> opt, F f)
+    -> decltype(std::make_optional(f(opt.value()))) {
+  if (opt) {
+    return std::make_optional(f(opt.value()));
+  } else {
+    return {};
+  }
 }
 
-void test()
-{
-    auto opt = transform(std::make_optional<std::string>("Hello"),
-                         [](std::string &value) { return value + " world"; });
-    if (opt) std::cout << opt.value() << std::endl;
+void test() {
+  auto opt = transform(
+      std::make_optional<std::string>("Hello"),
+      [](std::string& value) { return value + " world"; });
+  if (opt)
+    std::cout << opt.value() << std::endl;
 }
 
-int main()
-{
-    test();
-    return 0;
+int main() {
+  test();
+  return 0;
 }

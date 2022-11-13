@@ -14,6 +14,6 @@
 
 #define PROJECT_VER "1.0.0"
 #define PROJECT_NAME "cpp-functional-programming"
-#define PROJECT_META "META: Version: 1.0.0 BuildTime: 20221112 19:18:35"
+#define PROJECT_META "META: Version: 1.0.0 BuildTime: 20221113 22:42:56"
 
 #endif // CPP_CMAKE_TEMPLATE_CONFIG_H_IN

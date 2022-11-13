@@ -10,18 +10,12 @@
  * Copyright (c) 2022  . All rights reserved.
  */
 
-#include <variant>
 #include <iostream>
+#include <variant>
 
+void test() {}
 
-
-
-void test() {
-
-}
-
-int main()
-{
-    test();
-    return 0;
+int main() {
+  test();
+  return 0;
 }

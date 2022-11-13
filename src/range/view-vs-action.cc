@@ -15,29 +15,27 @@
 #include <ranges>
 #include <vector>
 
-void test()
-{
-    std::vector<std::string> names = {"1", "22", "333"};
-    for (const auto &name :
-         names | std::views::filter([](const std::string &s) { return s.size() > 1; }) |
-             std::views::transform([](const std::string &s) { return s + "-"; }) |
-             std::views::take(1)) {
-        std::cout << name << std::endl;
-    }
+void test() {
+  std::vector<std::string> names = {"1", "22", "333"};
+  for (const auto& name : names | std::views::filter([](const std::string& s) {
+                            return s.size() > 1;
+                          }) |
+           std::views::transform([](const std::string& s) { return s + "-"; }) |
+           std::views::take(1)) {
+    std::cout << name << std::endl;
+  }
 }
 
-void test_word_count_by_range()
-{
-    /**
-     * @brief 统计词频 using range.
-     */
+void test_word_count_by_range() {
+  /**
+   * @brief 统计词频 using range.
+   */
 
-    // std::vector<std::string> data = std::istream_range<std::string>(std::cin);
+  // std::vector<std::string> data = std::istream_range<std::string>(std::cin);
 }
 
-int main(int argc, char **argv)
-{
-    // test();
-    test_word_count_by_range();
-    return 0;
+int main(int argc, char** argv) {
+  // test();
+  test_word_count_by_range();
+  return 0;
 }

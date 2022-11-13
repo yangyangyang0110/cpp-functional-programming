@@ -1,4 +1,4 @@
-find_package(Boost 1.79 REQUIRED COMPONENTS system thread)
+find_package(Boost 1.80 REQUIRED COMPONENTS system thread)
 message(STATUS "Boost Include Dir: ${Boost_INCLUDE_DIRS}")
 message(STATUS "Boost Library Dir: ${Boost_LIBRARY_DIRS}")
 message(STATUS "Boost Library Dir: ${Boost_LIBRARIES}")

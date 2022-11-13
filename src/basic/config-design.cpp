@@ -16,52 +16,48 @@
 #include <variant>
 
 struct DatetimeParam {
-    std::array<std::string, 7> daytime;
+  std::array<std::string, 7> daytime;
 };
 
-struct FaceParam {
-};
+struct FaceParam {};
 
-struct PedestrianParam {
-};
+struct PedestrianParam {};
 
 using TaskId = std::string;
 
 enum class AlgorithmType {};
 
 struct TaskAndAlgorithm {
-    TaskId taskId;
-    AlgorithmType algorithmType;
+  TaskId taskId;
+  AlgorithmType algorithmType;
 
-    bool operator<(const TaskAndAlgorithm &other) const noexcept
-    {
-        return std::tie(taskId, algorithmType) <
-               std::tie(other.taskId, other.algorithmType);
-    }
+  bool operator<(const TaskAndAlgorithm& other) const noexcept {
+    return std::tie(taskId, algorithmType) <
+        std::tie(other.taskId, other.algorithmType);
+  }
 };
 
-class Config
-{
-public:
-    using Key = TaskAndAlgorithm;
-    using Value = std::variant<FaceParam, PedestrianParam>;
+class Config {
+ public:
+  using Key = TaskAndAlgorithm;
+  using Value = std::variant<FaceParam, PedestrianParam>;
 
-    static void addParam(const Key &key, Value &&value) noexcept { map_[key] = value; }
+  static void addParam(const Key& key, Value&& value) noexcept {
+    map_[key] = value;
+  }
 
-    static std::optional<Value> getParam(const Key &key) noexcept
-    {
-        auto it = map_.find(key);
-        return it != map_.end() ? std::make_optional(it->second) : std::nullopt;
-    }
+  static std::optional<Value> getParam(const Key& key) noexcept {
+    auto it = map_.find(key);
+    return it != map_.end() ? std::make_optional(it->second) : std::nullopt;
+  }
 
-private:
-    inline static std::map<Key, Value> map_;
+ private:
+  inline static std::map<Key, Value> map_;
 };
 
 void test() {}
 
-int main()
-{
-    test();
-    return 0;
+int main() {
+  test();
+  return 0;
 }
