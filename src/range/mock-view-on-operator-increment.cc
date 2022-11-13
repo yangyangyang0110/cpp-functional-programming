@@ -33,12 +33,12 @@ struct Person {
 
 template <typename Prediction, typename T = Person>
 class Filter {
- private:
+private:
   std::vector<T> arr_;
   decltype(arr_.begin()) current_position_;
   Prediction prediction_;
 
- public:
+public:
   Filter(std::initializer_list<T> list, Prediction&& prediction)
       : arr_(std::move(list)),
         current_position_(arr_.begin() - 1),
@@ -84,12 +84,12 @@ void test_filter() {
 
 template <typename UnaryOperator, typename T = Person>
 class Transform {
- private:
+private:
   std::vector<T> arr_;
   decltype(arr_.begin()) current_position_;
   UnaryOperator unary_operator_;
 
- public:
+public:
   Transform(std::initializer_list<T> list, UnaryOperator&& unary_operator)
       : arr_(std::move(list)),
         current_position_(arr_.begin()),

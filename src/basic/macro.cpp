@@ -14,7 +14,7 @@
 #include <string_view>
 
 class Manager {
- public:
+public:
   static void print(const std::string_view data) noexcept {
     std::cout << data << std::endl;
   }

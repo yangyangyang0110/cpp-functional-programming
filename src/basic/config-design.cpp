@@ -38,7 +38,7 @@ struct TaskAndAlgorithm {
 };
 
 class Config {
- public:
+public:
   using Key = TaskAndAlgorithm;
   using Value = std::variant<FaceParam, PedestrianParam>;
 
@@ -51,7 +51,7 @@ class Config {
     return it != map_.end() ? std::make_optional(it->second) : std::nullopt;
   }
 
- private:
+private:
   inline static std::map<Key, Value> map_;
 };
 

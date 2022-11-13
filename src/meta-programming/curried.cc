@@ -42,14 +42,14 @@ struct Foo {
 
   void echo() const { std::cout << v_ << std::endl; };
 
- private:
+private:
   T v_;
 };
 
 // 判断是否可以调用
 template <typename F, typename... CapturedArgs>
 class Curried {
- public:
+public:
   // using CaptureArgsTuple = std::tuple<std::decay_t<CapturedArgs>...>;
 
   template <typename... Args>
@@ -76,7 +76,7 @@ class Curried {
     }
   }
 
- private:
+private:
   F function_;
   std::tuple<CapturedArgs...> args_tuple_;
 };

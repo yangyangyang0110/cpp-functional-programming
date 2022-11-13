@@ -15,10 +15,10 @@
 #include <map>
 
 class Timer {
- private:
+private:
   std::chrono::system_clock::time_point now_;
 
- public:
+public:
   explicit Timer(bool is_reset = false) {
     if (is_reset)
       Reset();
@@ -48,12 +48,12 @@ void fib_test() {
 
 template <typename T = unsigned int>
 class FibCache {
- private:
+private:
   T last_;
   T previous_;
   size_t size_;
 
- public:
+public:
   FibCache() : previous_{0}, last_{1}, size_{2} {}
 
   [[nodiscard]] const size_t& size() const { return size_; }

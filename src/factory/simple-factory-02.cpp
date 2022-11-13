@@ -18,15 +18,15 @@
 
 // Define interface.
 class Inference {
- public:
+public:
   virtual void Preprocess(bool b) noexcept = 0;
   virtual ~Inference() noexcept = default;
 
- private:
+private:
 };
 
 class Factory {
- public:
+public:
   // using Creator = std::function<std::shared_ptr<Inference>()>;
   using Creator = void*;
   using CreatorRegistry = std::map<const std::string, Creator>;
@@ -47,7 +47,7 @@ class Factory {
     getCreatorRegistry()[name] = creator;
   }
 
- private:
+private:
   static CreatorRegistry& getCreatorRegistry() noexcept {
     static CreatorRegistry creatorRegistry;
     return creatorRegistry;
@@ -72,7 +72,7 @@ constexpr inline const char* bool2str(bool b) noexcept {
 }
 
 class Detect : public Inference {
- public:
+public:
   explicit Detect(std::string data) : data_(std::move(data)) {}
 
   void Preprocess(bool b) noexcept final {
@@ -80,12 +80,12 @@ class Detect : public Inference {
   }
   ~Detect() noexcept override = default;
 
- private:
+private:
   std::string data_;
 };
 
 class Classify : public Inference {
- public:
+public:
   explicit Classify(long id) {}
   void Preprocess(bool b) noexcept final {
     std::cout << "Classify: " << bool2str(b) << std::endl;

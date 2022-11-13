@@ -17,7 +17,7 @@
 using tcp = boost::asio::ip::tcp;
 
 class Session {
- public:
+public:
   explicit Session(boost::asio::io_service& io_service) : socket_(io_service) {}
   tcp::socket& getSocket() noexcept { return socket_; }
 
@@ -58,14 +58,14 @@ class Session {
     }
   }
 
- private:
+private:
   tcp::socket socket_;
   enum { MaxDataSize = 1024 };
   char data_[MaxDataSize]{};
 };
 
 class Server {
- public:
+public:
   Server(boost::asio::io_service& io_service, int port)
       : io_service_(io_service),
         acceptor_(io_service, tcp::endpoint(tcp::v4(), port)) {
@@ -96,7 +96,7 @@ class Server {
     }
   }
 
- private:
+private:
   boost::asio::io_service& io_service_;
   tcp::acceptor acceptor_;
 };

@@ -15,12 +15,12 @@
 
 template <typename F>
 class LazyValue {
- private:
+private:
   F function_; // value reference.
   mutable std::once_flag flag_;
   mutable decltype(function_()) cache_value_;
 
- public:
+public:
   explicit LazyValue(F function) : function_(function) {}
 
   const decltype(cache_value_)& get() const {

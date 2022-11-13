@@ -16,11 +16,11 @@
 #include <vector>
 
 struct MoveOnly {
- public:
+public:
   MoveOnly(MoveOnly const&) = delete;
   MoveOnly& operator=(MoveOnly const&) = delete;
 
- protected:
+protected:
   MoveOnly() = default;
   MoveOnly(MoveOnly&&) = default;
   MoveOnly& operator=(MoveOnly&&) = default;

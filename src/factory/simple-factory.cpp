@@ -14,11 +14,11 @@
 #include <memory>
 // Define interface.
 class Inference {
- public:
+public:
   virtual void Preprocess(bool b) noexcept = 0;
   virtual ~Inference() noexcept = default;
 
- private:
+private:
 };
 
 namespace details {
@@ -28,14 +28,14 @@ constexpr inline const char* bool2str(bool b) noexcept {
 }
 
 class Detect : public Inference {
- public:
+public:
   void Preprocess(bool b) noexcept final {
     std::cout << "Detect: " << bool2str(b) << std::endl;
   }
 };
 
 class Classify : public Inference {
- public:
+public:
   void Preprocess(bool b) noexcept final {
     std::cout << "Classify: " << bool2str(b) << std::endl;
   }
